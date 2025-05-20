@@ -1,4 +1,12 @@
 #include <stdio.h>
+#include <stdint.h>
+
+
+typedef struct{
+char first;
+char second;
+int32_t size;
+} Bitmap;
 
 int main(){
 
@@ -14,6 +22,9 @@ int main(){
 	// reading file:
 
 	unsigned char buffer[8];
+
+	Bitmap myLenka;
+
 	FILE *input_image_file;
 
 	input_image_file = fopen("lena.bmp", "rb");
@@ -30,12 +41,21 @@ int main(){
 	
 	printf("second fread:");
 	fclose(input_image_file);
-	fread(buffer, sizeof(buffer), 1, input_image_file);
 
-	printf("\n\lecimy:\n");
+	input_image_file = fopen("lena.bmp", "rb");
+	fread(&myLenka, sizeof(Bitmap), 1, input_image_file);
 
-	printf("%.4s", buffer);
+	printf("\nlecimy:\n");
+//	printf("\nsizeof unsiened int is %l\n",  sizeof(unsigned int));
+	printf("desc:first=%X\n",(myLenka.first));
+	printf("desc:sec=%X\n",(myLenka.second));
+	int32_t someuint = 66631;
+	printf("testinta = %d\n", someuint);
+	printf("size=%d\n",(myLenka.size));
+	printf("...?");
+//@	printf("%.4s", buffer);
 
+	fclose(input_image_file);
 	return 0;
 }
 
