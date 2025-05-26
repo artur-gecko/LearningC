@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/szelest/Projekty/LearningC/hello_world'
+relocations:     []
+...
