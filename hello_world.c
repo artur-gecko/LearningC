@@ -73,7 +73,14 @@ int main()
 	// printf("desc:third=%X", myLenka.third);
 	uint32_t someuint = 666;
 	printf("testinta = %d\n", 2 * someuint);
-	printf("size as hex=%X", myLenka.size);
+	printf("size as hex=%X\n", myLenka.size);
+	printf("size as bytes2=[%X]\n", ((((((uint8_t)*((&myLenka.size))))))));			// to jest 5 bajt
+	printf("size as bytes3=[%X]\n", (((((*(((uint8_t *)(&myLenka.size) + 1)))))))); // 6-ty bajt
+	printf("size as bytes4=[%X]\n", (((((*(((uint8_t *)(&myLenka.size) + 2)))))))); // 7-ty bajt
+	printf("size as bytes5=[%X]\n", (((((*(((uint8_t *)(&myLenka.size) - 1)))))))); // 4? Ale dlaczego?
+	printf("size as bytes6=[%X]\n", (((((*(((uint8_t *)(&myLenka.size) - 2)))))))); // 3? Ale dlaczego?
+	printf("size as ??????=[%d]\n", swap_uint32((uint32_t)(myLenka.size)));			// 3? Ale dlaczego?
+
 	printf("size=%d\n", (myLenka.size));
 	printf("...?");
 	printf("\nExpecting size: 786570...\n");
